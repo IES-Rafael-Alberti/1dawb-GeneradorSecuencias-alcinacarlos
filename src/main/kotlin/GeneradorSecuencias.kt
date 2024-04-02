@@ -17,13 +17,26 @@ class GeneradorSecuencias(
         mostrarSec()
     }
 
-    fun getSec(){
+    fun getSec(): String {
         var resultado = ""
         sec.forEach { resultado+= "${it} " }
-        entradaSalida.salida(sec)
+        return resultado
     }
 
     fun mostrarSec(){
-        entradaSalida.salida(sec)
+        entradaSalida.salida(getSec())
+    }
+
+    fun menu(){
+        var opcion:Int? = null
+        while (opcion != 3){
+            opcion = entradaSalida.mostrarMenu()
+            when(opcion){
+                1 -> fraseIncremental(entradaSalida.pedirNumero())
+                2 -> fraseFinal(entradaSalida.pedirNumero())
+                3 -> entradaSalida.salida("Adios bro")
+                else -> entradaSalida.salida("Opcion equivicada bro")
+            }
+        }
     }
 }
